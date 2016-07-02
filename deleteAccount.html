@@ -23,11 +23,11 @@ function deleteAccount(){
 			$.ajax({
 			url: URLs,
 			data: myData,
-			type:"post",
+			type:"delete",
 			dataType:'text',
 					success: function(msg){
 							if(msg == 0){
-									alert("login fail");
+									alert("delete fail");
 							}else{
  							 		alert("Delete Account Successful");
   								    window.location.replace("index.html");
