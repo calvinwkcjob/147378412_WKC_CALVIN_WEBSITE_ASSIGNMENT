@@ -1,0 +1,38 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+	 <meta charset="UTF-8">
+	<title>Drugs details</title> 
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<link rel="stylesheet" href="jquery.mobile.structure-1.0.1.css" />
+
+	<link rel="stylesheet" href="jquery.mobile-1.0.1.css" />
+	<link rel="stylesheet" href="custom.css" />
+	<script src="js/jquery-1.7.1.min.js"></script>
+	<script src="js/jquery.mobile-1.0.1.min.js"></script>
+</head> 
+<body> 
+<div id="choisir_ville" data-role="page" data-add-back-btn="true">
+	
+	<div data-role="header"> 
+		<h1> Drugs details</h1>
+	</div> 
+
+	<div data-role="content">
+	
+	<div class="choice_list">
+	  <ul data-role="listview" data-inset="true" data-filter="true"  >
+	    <li><a href="cannabis.html" data-transition="slidedown">Cannabis</a> </li>
+	<li><a href="cocaine.html" data-transition="slidedown">Cocaine </a> </li>
+	<li><a href="Heroin.html" data-transition="slidedown">Heroin</a></li>
+	<li><a href="ketamine.html" data-transition="slidedown">Ketamine</a> </li>
+	<li><a href="coughMedicine.html" data-transition="slidedown">Cough Medicine</a></li>
+	</ul>
+	</div>
+    <input type ="button" onclick="history.back()" value="Back Page">
+	
+	</div>
+
+</div><!-- /page -->
+</body>
+</html>

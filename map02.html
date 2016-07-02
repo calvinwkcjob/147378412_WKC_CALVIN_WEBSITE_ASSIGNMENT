@@ -1,0 +1,131 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>Center Map</title>
+
+<link href="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.css" rel="stylesheet" type="text/css" />
+
+<script src="http://code.jquery.com/jquery-1.6.4.min.js" type="text/javascript"></script>
+
+<script src="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.js" type="text/javascript"></script>
+
+
+
+</head>
+
+
+
+<body>
+
+<div data-role="page" id="page">
+
+<script>
+
+$( document ).ready(function() {
+
+
+
+  
+
+  
+
+  loadScript('http://maps.googleapis.com/maps/api/js?key=AIzaSyCKcDNX-dRWmBS0rfGYfIy9WQJjsWGHNbw&v=3&sensor=false&callback=initialize',
+
+              function(){
+				 // log('google-loader has been loaded, but not the maps-API ');
+				  
+				  });
+
+
+
+
+
+
+
+
+
+});
+
+
+
+    function loadScript(src,callback){
+
+  
+
+    var script = document.createElement("script");
+
+    script.type = "text/javascript";
+
+    if(callback)script.onload=callback;
+
+    document.getElementsByTagName("head")[0].appendChild(script);
+
+    script.src = src;
+
+  }
+
+
+
+function initialize() {
+
+    
+
+   // log('maps-API has been loaded, ready to use');
+
+    var mapOptions = {
+
+          zoom: 16,
+
+          center: new google.maps.LatLng(22.314845, 114.221558),
+
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+
+    };
+
+    map = new google.maps.Map(document.getElementById('map_canvas'),
+
+            mapOptions);
+
+  }
+
+
+
+function log(str){
+
+  document.getElementsByTagName('pre')[0].appendChild(document.createTextNode('['+new Date().getTime()+']\n'+str+'\n\n'));
+
+}
+
+</script>
+
+
+
+  <div data-role="header">
+
+    <h1>Centre Map</h1>
+
+  </div>
+
+  <div data-role="content"><pre><div id="map_canvas" style="height:200px"></div></pre></div>
+
+  <div data-role="footer">
+
+   <input type ="button" onclick="history.back()" value="Back Page">
+
+  </div>
+
+</div>
+
+
+
+
+
+</body>
+
+</html>
+

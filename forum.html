@@ -1,0 +1,119 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Forum </title> 
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<link rel="stylesheet" href="jquery.mobile.structure-1.0.1.css" />
+	<link rel="apple-touch-icon" href="images/launch_icon_57.png" />
+	<link rel="apple-touch-icon" sizes="72x72" href="images/launch_icon_72.png" />
+	<link rel="apple-touch-icon" sizes="114x114" href="images/launch_icon_114.png" />
+	<link rel="stylesheet" href="jquery.mobile-1.0.1.css" />
+	<link rel="stylesheet" href="custom.css" />
+	<script src="js/jquery-1.7.1.min.js"></script>
+	<script src="js/jquery.mobile-1.0.1.min.js"></script>
+</head>
+
+<body>
+<div data-role="page" id="forum.html">
+<script>
+$(document).ready(function() {
+	var myData = "user_name= &comment_info=";
+	$.ajax({
+		url: "forum.php?type=read",
+		data: myData,
+		type:"POST"
+		,
+		
+		success: function(msg){
+			//alert(msg);
+			var data = JSON.parse(msg);
+			//alert(JSON.stringif(data));
+			$.each(data, function(key, val) {
+				$("#messages").append("<p>"+val.name+ ": " + val.comments+" ["+val.time+"]</p>");
+			});
+		}
+	});
+	
+	
+	$("#submit").click (function(){
+		var URLs="forum.php?type=submit";
+		var name=$("#user_name").val();
+		var comments =$("#cm_info").val();
+;
+		var myData = "user_name=" + name + "&comment_info="+comments;
+		//alert(myData);
+		
+		$.ajax({
+		url: URLs,
+		data: myData,
+		type:"POST"
+		,
+		
+		success: function(msg){
+			var data = jQuery.parseJSON(msg);
+			if(data.result == true){
+
+				$("#messages").append("<p>"+name+ ":" +" " + comments+"</p>");
+				//window.reload();
+				location.reload();
+		
+		
+			}
+		
+		},
+		
+		error:function(xhr, ajaxOptions, thrownError){
+				alert(xhr.status);
+				alert(thrownError);
+			}
+		});
+	});
+});
+</script>
+
+	<div data-role="header" data-theme="b">
+    
+   <a href="index_member.html" rel="external" data-icon="arrow-l" class="ui-btn-left" >Back</a>
+    
+		<h1>Forum</h1>
+	</div>
+    
+    <div align="center"><ul id="messages"></ul></div>
+    
+	<div data-role="content">
+    <form>
+     
+  <p>Name:</p>
+	
+	    <p>
+	      <label for="Name"></label>
+	      <input type="text" name="user_name" id="user_name">
+        </p>
+     
+        <p>Comments:</p>
+	
+	    <p>
+	      <label for="comments"></label>
+	      <textarea rows="4" cols="50" id="cm_info"></textarea>
+        </p>
+        
+	    <p>
+	      <input type="submit" name="Submit" id="submit" value="Submit">
+	    </p>
+	  </form>
+      
+      
+    
+  
+  </div>
+    	
+	<div data-role="footer" data-position="fixed" data-theme="e">
+	<div data-role="navbar">
+	
+	</div>
+</div>
+</div>
+
+</body>
+</html>
