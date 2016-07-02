@@ -5,7 +5,7 @@ $password = "";
 $connection = mysql_connect($hostname, $username, $password) or die("Could not open connection to database");
 $db = mysql_select_db("calvin_db"); 
 
-$del_password = $_POST["password"]; //get the password from .html
+$del_password = $_DELETE["password"]; //get the password from .html
 echo $del_password;
 
 
